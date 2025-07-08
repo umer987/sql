@@ -1,0 +1,93 @@
+https://drive.google.com/drive/folders/1bYmaXmkD93tMEo_2OeOaHuCDl-lWG6qy     hacking
+https://drive.google.com/drive/mobile/folders/1zHrYSEjtry0kHw-X2ETzQUr83ZgSbtCf    editing
+https://github.com/practical-tutorials/project-based-learning             project based learning
+
+-- First, check if the database exists and drop it if necessary
+IF EXISTS (SELECT * FROM sys.databases WHERE name = 'Bank_BC')
+BEGIN
+    DROP DATABASE Bank_BC;
+END
+
+-- Create the database
+CREATE DATABASE Bank_BC;
+GO
+
+-- Use the newly created database
+USE Bank_BC;
+GO
+
+-- Check if the table exists and drop it if necessary
+IF OBJECT_ID('Bank_Customer', 'U') IS NOT NULL
+BEGIN
+    DROP TABLE Bank_Customer;
+END
+
+-- Create the Bank_Customer table
+CREATE TABLE Bank_Customer 
+(
+    Cust_ID INT PRIMARY KEY,
+    Cust_Nam VARCHAR(30),
+    Cust_CNIC BIGINT,
+    Cust_Account_No VARCHAR(20),
+    Cust_Email VARCHAR(30),
+    Cust_Add VARCHAR(50),
+    Cust_Phone VARCHAR(20),
+    Cust_Account_Type VARCHAR(15),
+    Cust_Card_Type VARCHAR(20),
+    Open_Date DATE
+);
+
+-- Insert a record into the Bank_Customer table
+INSERT INTO Bank_Customer 
+VALUES 
+(1, 'Shafeeq Bhai', 422012277996389, 'PKHBL0017788991159', 
+'shafeeqay@gmail.com', 'House# 9211, Perfume Chawk', '03001234567', 'Current', 'Golden', '2024-03-20');
+
+-- Select all records from the Bank_Customer table
+SELECT * FROM Bank_Customer;
+
+
+
+
+In a Database Management System (DBMS), **keys** are important tools used to identify and link data in tables. Here’s an easy way to understand them:
+
+1. **Primary Key**:
+   - A primary key is a special column (or set of columns) that uniquely identifies each row in a table.
+   - No two rows can have the same primary key value.
+   - Example: In a table of students, the student ID could be the primary key, because each student has a unique ID.
+
+2. **Foreign Key**:
+   - A foreign key is a column in one table that refers to the primary key in another table.
+   - It helps link two tables together.
+   - Example: In a table of orders, the customer ID might be a foreign key that links to the customer table where each customer has a unique ID.
+
+3. **Unique Key**:
+   - A unique key ensures that all values in a column are different, just like a primary key, but a table can have more than one unique key.
+   - Example: In a table of employees, both the employee ID and email address can be unique keys, meaning no two employees can have the same email address.
+
+4. **Candidate Key**:
+   - A candidate key is a set of columns that could potentially be used as the primary key because they can uniquely identify rows.
+   - Example: In a student table, both student ID and email address could be candidate keys, but only one will be chosen as the primary key.
+
+5. **Composite Key**:
+   - A composite key is made up of two or more columns that together uniquely identify a row in a table.
+   - Example: In a table of class registrations, the combination of student ID and class ID could be the composite key, as no single column alone is unique enough.
+
+6. **Alternate Key**:
+   - An alternate key is any candidate key that is not chosen as the primary key.
+   - Example: If student ID is the primary key, the email address could be an alternate key.
+
+7. **Super Key**:
+   - A super key is a set of one or more columns that can uniquely identify a row in a table, but it may have extra columns that are not needed.
+   - Example: If student ID is enough to identify a student, then a super key could also include the student’s name along with the student ID.
+
+To summarize:
+- **Primary key** = Unique identifier for each row in a table.
+- **Foreign key** = Links rows between tables.
+- **Unique key** = Ensures values in a column are unique.
+- **Candidate key** = Possible choices for primary key.
+- **Composite key** = Combines columns to form a unique identifier.
+- **Alternate key** = A candidate key that is not the primary key.
+- **Super key** = Any set of columns that uniquely identifies a row, but may include extra columns.
+
+Each key helps organize and manage data efficiently in the DBMS!
